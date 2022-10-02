@@ -35,9 +35,9 @@ public class SimpleBaseBallController implements BaseBallController{
     private void goNext(UserBallCount judge) {
         if (judge.isAnswer()) {
             showSuccess();
-        } else {
-            runGame();
+            return;
         }
+        runGame();
     }
 
     private void showSuccess() {
@@ -49,11 +49,13 @@ public class SimpleBaseBallController implements BaseBallController{
         String input = readLine();
         if (input.equals("1")) {
             start();
-        } else if(input.equals("2")){
-            this.view.showEnd();
-        } else {
-            handleUserInputForNextGame();
+            return;
         }
+        if(input.equals("2")){
+            this.view.showEnd();
+            return;
+        }
+        handleUserInputForNextGame();
     }
 
     private List<Integer> getUserInputs() {
