@@ -18,6 +18,6 @@ public class UserBallCount {
     }
 
     public boolean isAnswer() {
-        return getStrike() == 3;
+        return getStrike().equals(3);
     }
 }

@@ -1,5 +1,6 @@
 package baseball.controller.handlers;
 
 public interface ModeHandler {
-    GameStatus process();
+    void process();
+    boolean isRunning();
 }
