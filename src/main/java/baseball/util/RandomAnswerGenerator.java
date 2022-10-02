@@ -10,9 +10,7 @@ public class RandomAnswerGenerator implements AnswerGenerator {
     public List<Integer> generate(int start, int end, int count) {
         validateRange(start,end);
         validateCount(count);
-        List<Integer> answers = getUniqueNumbers(start, end, count);
-        Collections.shuffle(answers);
-        return answers;
+        return getUniqueNumbers(start, end, count);
     }
 
     private List<Integer> getUniqueNumbers(int start, int end, int count) {
