@@ -1,7 +1,20 @@
 package baseball;
 
+import baseball.controller.BaseBallController;
+import baseball.controller.SimpleBaseBallController;
+import baseball.model.AnswerGenerator;
+import baseball.model.BaseBallModel;
+import baseball.model.SimpleBaseBallModelImpl;
+import baseball.util.RandomAnswerGenerator;
+import baseball.view.BaseBallView;
+import baseball.view.SimpleBaseBallView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        AnswerGenerator answerGenerator = new RandomAnswerGenerator();
+        BaseBallModel model = new SimpleBaseBallModelImpl(answerGenerator);
+        BaseBallView view = new SimpleBaseBallView();
+        BaseBallController controller = new SimpleBaseBallController(model,view);
+        controller.start();
     }
 }
