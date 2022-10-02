@@ -6,6 +6,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class SelectionModeHandler implements ModeHandler {
     private final BaseBallView view;
+    private final String StartNewGame = "1";
+    private final String ExitGame = "2";
 
     public SelectionModeHandler(BaseBallView view) {
         this.view = view;
@@ -14,18 +16,23 @@ public class SelectionModeHandler implements ModeHandler {
     @Override
     public GameStatus process() {
         this.view.showSuccess();
-        return handleUserInputForNextGame();
+        String userSelection = "";
+        while(inValidSelection(userSelection)){
+            userSelection = readLine();
+        }
+        return handleUserSelection(userSelection);
     }
 
-    private GameStatus handleUserInputForNextGame() {
-        String input = readLine();
-        if (input.equals("1")) {
+    private boolean inValidSelection(String userSelection) {
+        return !(userSelection.equals(StartNewGame) || userSelection.equals(ExitGame));
+    }
+
+    private GameStatus handleUserSelection(String userSelection){
+        if (userSelection.equals(StartNewGame)) {
             return new GameStatus(true,false);
         }
-        if(input.equals("2")){
-            this.view.showEnd();
-            return new GameStatus(false,false);
-        }
-        return handleUserInputForNextGame();
+
+        this.view.showEnd();
+        return new GameStatus(false,false);
     }
 }

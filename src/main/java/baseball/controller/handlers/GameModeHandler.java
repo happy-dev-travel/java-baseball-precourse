@@ -12,6 +12,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class GameModeHandler implements ModeHandler {
     private final BaseBallModel model;
     private final BaseBallView view;
+    private boolean findAnswer;
 
     public GameModeHandler(BaseBallModel model, BaseBallView view) {
         this.model = model;
@@ -20,16 +21,22 @@ public class GameModeHandler implements ModeHandler {
 
     @Override
     public GameStatus process() {
-        this.model.init();
-        runGame();
+        init();
+        run();
         return new GameStatus(true,true);
     }
 
-    private void runGame() {
-        UserBallCount judge = this.model.judge(getUserInputs());
-        this.view.showBaseBallCount(judge.getStrike(), judge.getBall());
-        if(!judge.isAnswer())
-            runGame();
+    private void init() {
+        this.model.init();
+        this.findAnswer = false;
+    }
+
+    private void run() {
+        while(!this.findAnswer){
+            UserBallCount judge = this.model.judge(getUserInputs());
+            this.view.showBaseBallCount(judge.getStrike(), judge.getBall());
+            this.findAnswer = judge.isAnswer();
+        }
     }
 
     private List<Integer> getUserInputs() {
