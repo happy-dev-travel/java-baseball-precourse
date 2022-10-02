@@ -53,11 +53,11 @@ public class SimpleBaseBallView implements BaseBallView {
     @Override
     public void showSuccess() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
     }
 
     @Override
     public void showEnd() {
-        System.out.println("또 만나요");
+        System.out.println("또 만나요~");
     }
 }

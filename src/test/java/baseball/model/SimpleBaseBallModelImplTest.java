@@ -20,7 +20,7 @@ class SimpleBaseBallModelImplTest {
     private RandomAnswerGenerator generator;
 
     @InjectMocks
-    private SimpleBaseBallModelImpl model;
+    private SimpleBaseBallModel model;
 
     @BeforeEach
     void prepare(){

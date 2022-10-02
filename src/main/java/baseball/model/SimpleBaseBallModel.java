@@ -3,12 +3,12 @@ package baseball.model;
 import java.util.HashSet;
 import java.util.List;
 
-public class SimpleBaseBallModelImpl implements BaseBallModel {
+public class SimpleBaseBallModel implements BaseBallModel {
 
     private List<Integer> answers;
     private final AnswerGenerator answerGenerator;
 
-    public SimpleBaseBallModelImpl(AnswerGenerator answerGenerator) {
+    public SimpleBaseBallModel(AnswerGenerator answerGenerator) {
         this.answerGenerator = answerGenerator;
     }
 
