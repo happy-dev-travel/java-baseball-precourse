@@ -1,6 +1,7 @@
 package baseball.view;
 
 public class SimpleBaseBallView implements BaseBallView {
+
     @Override
     public void showNextInput() {
         System.out.print("숫자를 입력해 주세요 : ");
@@ -16,15 +17,37 @@ public class SimpleBaseBallView implements BaseBallView {
     }
 
     private void printBallCount(int strike, int ball) {
-        String strikeFormat = String.format("%d스트라이크", strike);
-        String ballFormat = String.format("%d볼", ball);
-        if(strike == 0){
-            System.out.println(ballFormat);
-        } else if (ball == 0) {
-            System.out.println(strikeFormat);
-        } else {
-            System.out.printf("%s %s%n",ballFormat,strikeFormat);
+        printStrikeAndBall(strike, ball);
+        printBall(strike, ball);
+        printStrike(strike, ball);
+    }
+
+    private void printStrike(int strike, int ball) {
+        if (ball == 0) {
+            System.out.printf("%s%n",getStrikeText(strike));
         }
+    }
+
+    private void printBall(int strike, int ball) {
+        if(strike == 0){
+            System.out.printf("%s%n",getBallText(ball));
+        }
+    }
+
+    private void printStrikeAndBall(int strike, int ball) {
+        if(strike > 0 && ball > 0){
+            System.out.printf("%s %s%n", getBallText(ball), getStrikeText(strike));
+        }
+    }
+
+    private String getBallText(int ball) {
+        String ballFormat = "%d볼";
+        return String.format(ballFormat, ball);
+    }
+
+    private String getStrikeText(int strike) {
+        String strikeFormat = "%d스트라이크";
+        return String.format(strikeFormat, strike);
     }
 
     @Override
