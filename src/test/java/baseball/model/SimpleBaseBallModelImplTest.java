@@ -1,23 +1,19 @@
 package baseball.model;
 
 import baseball.util.RandomAnswerGenerator;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
-@ExtendWith(MockitoExtension.class)
 class SimpleBaseBallModelImplTest {
 
     @Mock
@@ -28,6 +24,7 @@ class SimpleBaseBallModelImplTest {
 
     @BeforeEach
     void prepare(){
+        MockitoAnnotations.openMocks(this);
         given(generator.generate(1,9,3)).willReturn(Arrays.asList(
                 1,3,5
         ));
