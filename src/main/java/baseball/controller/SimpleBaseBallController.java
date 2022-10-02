@@ -34,15 +34,11 @@ public class SimpleBaseBallController implements BaseBallController{
 
     private void goNext(UserBallCount judge) {
         if (judge.isAnswer()) {
-            showSuccess();
+            this.view.showSuccess();
+            handleUserInputForNextGame();
             return;
         }
         runGame();
-    }
-
-    private void showSuccess() {
-        this.view.showSuccess();
-        handleUserInputForNextGame();
     }
 
     private void handleUserInputForNextGame() {
