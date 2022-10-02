@@ -3,7 +3,7 @@ package baseball.model;
 import java.util.HashSet;
 import java.util.List;
 
-public class SimpleBaseBallModelImpl implements SimpleBaseBallModel{
+public class SimpleBaseBallModelImpl implements BaseBallModel {
 
     private List<Integer> answers;
     private final AnswerGenerator answerGenerator;
