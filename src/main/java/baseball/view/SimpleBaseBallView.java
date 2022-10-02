@@ -10,4 +10,9 @@ public class SimpleBaseBallView implements BaseBallView {
     public void showBaseBallCount(int strike, int ball) {
 
     }
+
+    @Override
+    public void showSuccess() {
+
+    }
 }

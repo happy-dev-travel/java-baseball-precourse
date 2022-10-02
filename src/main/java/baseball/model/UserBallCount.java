@@ -16,4 +16,8 @@ public class UserBallCount {
     public Integer getBall(){
         return this.ball;
     }
+
+    public boolean isAnswer() {
+        return getStrike() == 3;
+    }
 }

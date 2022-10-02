@@ -22,11 +22,37 @@ public class SimpleBaseBallController implements BaseBallController{
     @Override
     public void start() {
         this.model.init();
+        runGame();
+    }
 
-        while(true){
-            List<Integer> userInputs = getUserInputs();
-            UserBallCount judge = this.model.judge(userInputs);
-            this.view.showBaseBallCount(judge.getStrike(), judge.getBall());
+    private void runGame() {
+        List<Integer> userInputs = getUserInputs();
+        UserBallCount judge = this.model.judge(userInputs);
+        this.view.showBaseBallCount(judge.getStrike(), judge.getBall());
+        goNext(judge);
+    }
+
+    private void goNext(UserBallCount judge) {
+        if (judge.isAnswer()) {
+            showSuccess();
+        } else {
+            runGame();
+        }
+    }
+
+    private void showSuccess() {
+        this.view.showSuccess();
+        handleUserInputForNextGame();
+    }
+
+    private void handleUserInputForNextGame() {
+        String input = readLine();
+        if (input.equals("1")) {
+            start();
+        } else if(input.equals("2")){
+            this.view.showEnd();
+        } else {
+            handleUserInputForNextGame();
         }
     }
 
