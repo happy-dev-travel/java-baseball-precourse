@@ -10,8 +10,8 @@ public class SelectionModeHandler implements ModeHandler {
     private final BaseBallController controller;
     private final BaseBallView view;
     private final BaseBallModel model;
-    private final String StartNewGame = "1";
-    private final String ExitGame = "2";
+    private static final String StartNewGame = "1";
+    private static final String ExitGame = "2";
 
     public SelectionModeHandler(BaseBallModel model,BaseBallView view,BaseBallController controller) {
         this.controller = controller;
@@ -28,7 +28,7 @@ public class SelectionModeHandler implements ModeHandler {
 
     private String getValidSelection() {
         String userSelection = readLine();
-        while(inValidSelection(userSelection)){
+        while(isInValidSelection(userSelection)){
             this.view.showWrongSelectionInfo();
             userSelection = readLine();
         }
@@ -40,19 +40,17 @@ public class SelectionModeHandler implements ModeHandler {
         return true;
     }
 
-    private boolean inValidSelection(String userSelection) {
+    private boolean isInValidSelection(String userSelection) {
         return !(userSelection.equals(StartNewGame) || userSelection.equals(ExitGame));
     }
 
-    private void handleUserSelection(String userSelection){
+    private void handleUserSelection(String userSelection) {
         if (userSelection.equals(StartNewGame)) {
             this.controller.setHandler(new InitModeHandler(this.model,this.view,this.controller));
-            return;
         }
         if(userSelection.equals(ExitGame)) {
             this.view.showEnd();
             this.controller.setHandler(new EndModeHandler());
-            return;
         }
     }
 }

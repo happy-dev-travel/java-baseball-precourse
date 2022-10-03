@@ -1,7 +1,7 @@
 package baseball.view;
 
 public interface BaseBallView {
-    void showNextInput();
+    void showRequestNextInput();
     void showBaseBallCount(int strike,int ball);
     void showSuccess();
     void showSelection();

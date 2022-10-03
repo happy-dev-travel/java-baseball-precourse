@@ -6,7 +6,7 @@ import baseball.view.BaseBallView;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class InputModeHandler implements ModeHandler{
+public class InputModeHandler implements ModeHandler {
 
     private final BaseBallModel model;
     private final BaseBallView view;
@@ -20,9 +20,9 @@ public class InputModeHandler implements ModeHandler{
 
     @Override
     public void process() {
-        this.view.showNextInput();
+        this.view.showRequestNextInput();
         String userInput = readLine();
-        if(isExitCharacterDuringGame(userInput)){
+        if(isExitCharacterDuringGame(userInput)) {
             this.view.showAnswer(this.model.getAnswer());
             this.controller.setHandler(new SelectionModeHandler(model,view,controller));
             return;

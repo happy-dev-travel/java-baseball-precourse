@@ -4,7 +4,7 @@ import baseball.controller.BaseBallController;
 import baseball.model.BaseBallModel;
 import baseball.view.BaseBallView;
 
-public class InitModeHandler implements ModeHandler{
+public class InitModeHandler implements ModeHandler {
 
     private final BaseBallModel model;
     private final BaseBallView view;

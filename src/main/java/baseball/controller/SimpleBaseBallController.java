@@ -14,7 +14,7 @@ public class SimpleBaseBallController implements BaseBallController {
 
     @Override
     public void start() {
-        while(this.currentHandler.isRunning()){
+        while(this.currentHandler.isRunning()) {
             this.currentHandler.process();
         }
     }

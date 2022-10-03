@@ -3,7 +3,7 @@ package baseball.view;
 public class SimpleBaseBallView implements BaseBallView {
 
     @Override
-    public void showNextInput() {
+    public void showRequestNextInput() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
