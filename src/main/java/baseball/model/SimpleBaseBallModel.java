@@ -26,6 +26,22 @@ public class SimpleBaseBallModel implements BaseBallModel {
         return judgeInner(userAnswerInNumber);
     }
 
+    @Override
+    public String getAnswer() {
+        if(answers == null || answers.size() != 3)
+            throw new IllegalArgumentException("정답이 생성되지 않았습니다. init함수를 호출하세요");
+
+        return convertAnswersToString();
+    }
+
+    private String convertAnswersToString() {
+        StringBuilder sb = new StringBuilder(3);
+        for (Integer num : answers) {
+            sb.append(num);
+        }
+        return sb.toString();
+    }
+
     private UserBallCount judgeInner(final List<Integer> userAnswers) {
         Integer countInAnswer = countValidUserAnswer(userAnswers);
         if(countInAnswer == 0){

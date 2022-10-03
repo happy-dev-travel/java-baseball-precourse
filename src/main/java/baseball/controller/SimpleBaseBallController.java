@@ -1,6 +1,6 @@
 package baseball.controller;
 
-import baseball.controller.handlers.GameModeHandler;
+import baseball.controller.handlers.InitModeHandler;
 import baseball.controller.handlers.ModeHandler;
 import baseball.model.BaseBallModel;
 import baseball.view.BaseBallView;
@@ -9,7 +9,7 @@ public class SimpleBaseBallController implements BaseBallController {
     private ModeHandler currentHandler;
 
     public SimpleBaseBallController(BaseBallModel model, BaseBallView view) {
-        this.currentHandler = new GameModeHandler(model,view,this);
+        this.currentHandler = new InitModeHandler(model,view,this);
     }
 
     @Override

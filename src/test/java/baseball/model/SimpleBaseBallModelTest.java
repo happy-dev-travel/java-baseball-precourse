@@ -65,4 +65,14 @@ class SimpleBaseBallModelTest {
     void judge4() {
         assertThatThrownBy(()->model.judge(null)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("[positive] init후에 정답을 요청하면 3자리 문자열이 반환됨")
+    @Test
+    void judge5() {
+
+        String answer = model.getAnswer();
+
+        assertThat(answer).hasSize(3);
+        assertThat(answer).matches("[1-9]{3}");
+    }
 }

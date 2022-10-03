@@ -21,11 +21,18 @@ public class SelectionModeHandler implements ModeHandler {
 
     @Override
     public void process() {
-        String userSelection = "";
+        this.view.showSelection();
+        String userSelection = getValidSelection();
+        handleUserSelection(userSelection);
+    }
+
+    private String getValidSelection() {
+        String userSelection = readLine();
         while(inValidSelection(userSelection)){
+            this.view.showWrongSelectionInfo();
             userSelection = readLine();
         }
-        handleUserSelection(userSelection);
+        return userSelection;
     }
 
     @Override
@@ -39,7 +46,7 @@ public class SelectionModeHandler implements ModeHandler {
 
     private void handleUserSelection(String userSelection){
         if (userSelection.equals(StartNewGame)) {
-            this.controller.setHandler(new GameModeHandler(this.model,this.view,this.controller));
+            this.controller.setHandler(new InitModeHandler(this.model,this.view,this.controller));
             return;
         }
         if(userSelection.equals(ExitGame)) {
